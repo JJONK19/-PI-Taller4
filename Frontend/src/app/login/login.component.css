@@ -1,0 +1,53 @@
+.clr-form-container {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    justify-content: center; /* Centra verticalmente los elementos */
+    align-items: center; /* Centra horizontalmente los elementos */
+    height: 100vh;
+    background: linear-gradient(to bottom,#87CEEB, #E0FFFF);
+}
+
+.clr-form {
+    width: 500px; 
+}
+
+.clr-form-control {
+    margin-bottom: 20px; 
+}
+
+.clr-form-control label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.clr-input {
+    width: 100%; 
+}
+
+.clr-form-actions {
+    text-align: center; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.button-container button {
+    width: 100%;
+    margin-right: 10px;
+}
+
+.forgot-password-link {
+    text-align: center; 
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px; /* Añade espacio entre el logo y el formulario */
+}
+
+.logo-container img {
+    max-width: 500px; /* Ajusta el tamaño del logo según tu preferencia */
+    height: auto;
+}
