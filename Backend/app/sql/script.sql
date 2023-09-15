@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS curso, usuario, catedratico, cursoAprobado, cursoImpartido,
 -- Tabla Curso
 CREATE TABLE IF NOT EXISTS curso (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(30) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
     creditos INT NOT NULL
 ); 
 
