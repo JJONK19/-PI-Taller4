@@ -1,13 +1,56 @@
-<header class="header-5">
-    <div class="branding">
-        <a href="..." class="nav-link">
-            <cds-icon shape="vm-bug"></cds-icon>
-            <span class="title">Clarity Design</span>
-        </a>
+<!-- Formulario -->
+<div class="clr-form-container">
+    <div class="logo-container">
+        <img src="/assets/images/logo_azul.png" alt="Logo de la organización">
+        <h1>Registrar Usuario</h1>
     </div>
-    <div class="header-nav">
-        <a routerLink="/login" class="nav-link" aria-current="page"><span class="nav-text">Dashboard</span></a>
-        <a routerLink="/recovery-password" class="nav-link"><span class="nav-text">Interactive Analytics</span></a>
-        <a routerLink="/create-user" class="active nav-link"><span class="nav-text">Interactive Analytics</span></a>
-    </div>
-</header>
+    
+    <form class="clr-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="clr-form-control" [ngClass]="{'clr-error': username.invalid && (username.dirty || username.touched)}">
+            <label for="username" class="clr-control-label">Registro Académico</label>
+            <input type="text" id="username" name="username" class="clr-input" [(ngModel)]="formData.username" required #username="ngModel">
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="clr-subtext-error">Obligatorio</div>
+        </div>
+
+        <div class="clr-form-control" [ngClass]="{'clr-error': nombres.invalid && (nombres.dirty || nombres.touched)}">
+            <label for="nombres" class="clr-control-label">Nombre</label>
+            <input type="text" id="nombres" name="nombres" class="clr-input" [(ngModel)]="formData.nombres" required #nombres="ngModel">
+            <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="clr-subtext-error">Obligatorio</div>
+        </div>
+
+        <div class="clr-form-control" [ngClass]="{'clr-error': apellidos.invalid && (apellidos.dirty || apellidos.touched)}">
+            <label for="apellidos" class="clr-control-label">Apellido</label>
+            <input type="text" id="apellidos" name="apellidos" class="clr-input" [(ngModel)]="formData.apellidos" required #apellidos="ngModel">
+            <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)" class="clr-subtext-error">Obligatorio</div>
+        </div>
+
+        <div class="clr-form-control" [ngClass]="{'clr-error': correo.invalid && (correo.dirty || correo.touched)}">
+            <label for="correo" class="clr-control-label">Correo</label>
+            <input type="text" id="correo" name="correo" class="clr-input" [(ngModel)]="formData.correo" required #correo="ngModel">
+            <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="clr-subtext-error">Obligatorio</div>
+        </div>
+
+        <div class="clr-form-control" [ngClass]="{'clr-error': password.invalid && (password.dirty || password.touched)}">
+            <label for="password" class="clr-control-label">Contraseña</label>
+            <input type="password" id="password" name="password" class="clr-input" [(ngModel)]="formData.password" required #password="ngModel">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="clr-subtext-error">Obligatorio</div>
+        </div>
+
+        <div class="clr-form-control">
+            <label for="passwordConfirm" class="clr-control-label">Verificar Contraseña</label>
+            <input type="password" id="passwordConfirm" name="passwordConfirm" class="clr-input" [(ngModel)]="formData.passwordConfirm" required #passwordConfirm="ngModel">
+            <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)" class="clr-subtext-error">Obligatorio</div>
+            <div *ngIf="formData.password !== formData.passwordConfirm" class="clr-subtext-error">Las contraseñas no coinciden</div>
+        </div>
+
+        <div class="clr-form-actions">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+
+        <div class="clr-form-actions">
+            <a routerLink="/login" class="registro-link">« Regresar al inicio de sesión</a>
+        </div>
+
+    </form>
+</div>
+  
