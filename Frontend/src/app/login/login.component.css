@@ -1,10 +1,10 @@
 .clr-form-container {
     display: flex;
-    flex-direction: column; /* Apila los elementos verticalmente */
-    justify-content: center; /* Centra verticalmente los elementos */
-    align-items: center; /* Centra horizontalmente los elementos */
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
     height: 100vh;
-    background: linear-gradient(to bottom,#87CEEB, #E0FFFF);
+    background: linear-gradient(to top, #BFEFFF, #F0F8FF)
 }
 
 .clr-form {
@@ -25,7 +25,10 @@
 }
 
 .clr-form-actions {
-    text-align: center; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;  
 }
 
 .button-container {
@@ -38,16 +41,27 @@
     margin-right: 10px;
 }
 
-.forgot-password-link {
-    text-align: center; 
-}
-
 .logo-container {
     text-align: center;
-    margin-bottom: 20px; /* Añade espacio entre el logo y el formulario */
+    margin-bottom: 20px;
 }
 
 .logo-container img {
-    max-width: 500px; /* Ajusta el tamaño del logo según tu preferencia */
+    max-width: 500px; 
     height: auto;
+}
+
+.registro-link {
+    text-decoration: none;
+    color: #2979b5;
+    font-weight: bold;
+    font-size: 35px; 
+}
+
+.registro-link:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    color: #2979b5;
 }
