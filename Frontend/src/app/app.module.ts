@@ -12,13 +12,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RecoveryPasswordComponent } from './recovery-password/recovery-password.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RecoveryPasswordComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    HomeComponent
   ],
   imports: [
     ClarityModule,

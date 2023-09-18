@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { LogicaService } from 'src/app/logica/logica.service';
 
 @Component({
   selector: 'app-create-user',
@@ -16,11 +17,22 @@ export class CreateUserComponent {
     passwordConfirm: ''
   };
 
-  constructor(private formBuilder: FormBuilder) {}
+  message = ''
+  response = { mensaje: -1 }
+
+  constructor(private analizarService: LogicaService, private formBuilder: FormBuilder) {}
 
   onSubmit() {
-    // Aquí puedes agregar la lógica para enviar los datos del formulario al servidor
-    console.log('Datos del formulario enviados:', this.formData);
+    //Crear la data 
+    const data = {
+      registro: this.formData.username,
+      nombres: this.formData.nombres,
+      apellidos: this.formData.apellidos,
+      password: this.formData.password,
+      correo: this.formData.correo
+    } 
+
+    //Reiniciar el formulario
     this.formData = {
       username: '',
       nombres: '',
@@ -29,8 +41,20 @@ export class CreateUserComponent {
       password: '', 
       passwordConfirm: ''
     };
-    // Puedes hacer una solicitud HTTP aquí para autenticar al usuario
-    // y redirigirlo a la página de inicio de sesión exitosa.
-  }
+
+    //Hacer la petición
+    this.analizarService.crearUsuario(data).subscribe((res:any)=>{
+      this.response = res;
+      if (res.mensaje === 1) {
+        this.message = 'Mensaje: Usuario creado correctamente.';
+      } else if (res.mensaje === 0) {
+        this.message = 'Error: El usuario ya existe.';
+      }
+    }, err=>{
+      console.log(err)
+      this.response = { mensaje: 2 };
+      this.message = 'Error: No se pudo completar la solicitud.';
+    })
+  } 
   
 }

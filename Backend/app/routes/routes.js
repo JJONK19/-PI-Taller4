@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const createModel = require('../controllers/create')
+const { createUser } = require('./controllers/createUser')
+const { loginUser } = require('./controllers/loginUser')
+const { recoverUser } = require('./controllers/recoverUser')
 
 // Main route
 router.get('/', (req, res) => {
@@ -21,5 +24,14 @@ router.get('/crearmodelo', (req, res) => {
       })
     })
 })
+
+// Crear usuario
+router.post('/create-user', createUser)
+
+// Inicio de sesión
+router.post('/login', loginUser)
+
+//Cambiar contraseña
+router.post('/change-password', recoverUser)
 
 module.exports = router

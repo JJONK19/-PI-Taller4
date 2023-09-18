@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { LogicaService } from 'src/app/logica/logica.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,17 +15,39 @@ export class LoginComponent {
     password: ''
   };
 
-  constructor(private formBuilder: FormBuilder) {}
+  message = ''
+  response = { mensaje: -1 }
+
+  constructor(private router: Router, private analizarService: LogicaService, private formBuilder: FormBuilder) {}
 
   onSubmit() {
-    // Aquí puedes agregar la lógica para enviar los datos del formulario al servidor
-    console.log('Datos del formulario enviados:', this.formData);
+    //Crear la data 
+    const data = {
+      registro: this.formData.username,
+      password: this.formData.password
+    }
+
+    //Hacer la petición
+    this.analizarService.loginUsuario(data).subscribe((res:any)=>{
+      this.response = res;
+      if (res.mensaje === 1) {
+        this.analizarService.login(this.formData.username)
+        this.router.navigate(['/home'])
+      } else if (res.mensaje === 0) {
+        this.message = 'Error: La contraseña o el usuario son incorrectos.';
+      }
+    }, err=>{
+      console.log(err)
+      this.response = { mensaje: 2 };
+      this.message = 'Error: No se pudo completar la solicitud.';
+    })
+
+    //Reiniciar el formulario
     this.formData = {
       username: '',
-      password: ''
+      password: '' 
     };
-    // Puedes hacer una solicitud HTTP aquí para autenticar al usuario
-    // y redirigirlo a la página de inicio de sesión exitosa.
+
   }
   
 }

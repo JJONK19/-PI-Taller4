@@ -47,6 +47,10 @@
             <button type="submit" class="btn btn-primary">Registrar</button>
         </div>
 
+        <div *ngIf="message" class="alert" [ngClass]="{'clr-error': (response.mensaje === 0 ||  response.mensaje === 2 ) , 'clr-success': response.mensaje === 1}">
+            {{ message }}
+        </div>
+
         <div class="clr-form-actions">
             <a routerLink="/login" class="registro-link">« Regresar al inicio de sesión</a>
         </div>
