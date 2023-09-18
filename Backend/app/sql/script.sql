@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     registro VARCHAR(10) PRIMARY KEY,
     nombres VARCHAR (20) NOT NULL,
     apellidos VARCHAR(20) NOT NULL,
-    password VARCHAR(20) NOT NULL,
+    password VARCHAR(100) NOT NULL,
     correo  VARCHAR(40) NOT NULL,
     creditos INT DEFAULT 0
 );

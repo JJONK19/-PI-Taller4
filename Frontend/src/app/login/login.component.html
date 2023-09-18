@@ -22,7 +22,7 @@
             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
         </div>
 
-        <div *ngIf="message" class="alert" [ngClass]="{'clr-error': (response.mensaje === 0 ||  response.mensaje === 2 ) , 'clr-success': response.mensaje === 1}">
+        <div *ngIf="message" class="alert" [ngClass]="{'clr-error': (response.mensaje === '0' ||  response.mensaje === '2' ) , 'clr-success': response.mensaje === '1'}">
             {{ message }}
         </div>
 

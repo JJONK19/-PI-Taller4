@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const createModel = require('../controllers/create')
-const { createUser } = require('./controllers/createUser')
-const { loginUser } = require('./controllers/loginUser')
-const { recoverUser } = require('./controllers/recoverUser')
+const { createUser } = require('../controllers/createUser')
+const { loginUser } = require('../controllers/loginUser')
+const { recoverUser } = require('../controllers/recoverUser')
 
 // Main route
 router.get('/', (req, res) => {
@@ -32,6 +32,6 @@ router.post('/create-user', createUser)
 router.post('/login', loginUser)
 
 //Cambiar contraseña
-router.post('/change-password', recoverUser)
+router.post('/recovery-password', recoverUser)
 
 module.exports = router

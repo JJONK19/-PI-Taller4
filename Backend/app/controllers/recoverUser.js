@@ -1,45 +1,32 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
-const conn = require('../config/connection')
+const conn = require('../config/connection');
 
-const recoverUser = (req, res) => {
-  const { registro, correo, password } = req.body
-  
-  let sql = 'SELECT * FROM usuario WHERE registro = ? AND correo = ?'
+const recoverUser = async (req, res) => {
+  const { registro, correo, password } = req.body;
 
-  connection.query(sql, [registro, correo], (err, results) => {
-    if (err) {
-      console.error('Error en la consulta SQL:', err)
-      return res.status(200).json({ mensaje: '0' })
-    }
+  try {
+    const connection = await mysql.createConnection(conn.config.connection);
+
+    const [results] = await connection.execute('SELECT * FROM usuario WHERE registro = ? AND correo = ?', [registro, correo]);
 
     if (results.length === 0) {
-      return res.status(200).json({ mensaje: '0' })
+      return res.status(200).json({ mensaje: '0' });
     }
 
-    bcrypt.hash(password, 10, (err, hashedPassword) => {
-      if (err) {
-        console.error('Error al hash de la contraseña:', err)
-        return res.status(200).json({ mensaje: '2' })
-      }
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-      sql = 'UPDATE usuario SET password = ? WHERE registro = ?'
+    const updateResults = await connection.execute('UPDATE usuario SET password = ? WHERE registro = ?', [hashedPassword, registro]);
 
-      connection.query(sql, [hashedPassword, registro], (err, results) => {
-        if (err) {
-          console.error('Error en la consulta SQL:', err)
-          return res.status(200).json({ mensaje: '0' })
-        }
+    if (updateResults[0].affectedRows === 0) {
+      return res.status(200).json({ mensaje: '0' });
+    }
+    //console.log('Contraseña cambiada exitosamente');
+    return res.status(200).json({ mensaje: '1' });
+  } catch (error) {
+    //console.error('Error en la consulta SQL:', error);
+    return res.status(200).json({ mensaje: '2' });
+  }
+};
 
-        if (results.affectedRows === 0) {
-          return res.status(200).json({ mensaje: '0' })
-        }
-
-        console.log('Contraseña cambiada exitosamente')
-        return res.status(200).json({ mensaje: '1' })
-      })
-    })
-  })
-}
-
-module.exports = { recoverUser }
+module.exports = { recoverUser };

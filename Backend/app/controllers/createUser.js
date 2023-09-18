@@ -1,36 +1,30 @@
-const conn = require('../config/connection')
-const mysql = require('mysql2/promise')
-const bcrypt = require('bcrypt')
+const conn = require('../config/connection');
+const mysql = require('mysql2/promise'); // Importa la versión de promesas de mysql2
+const bcrypt = require('bcrypt');
 
 const createUser = async (req, res) => {
-  const { registro, nombres, apellidos, password, correo} = req.body
-  const connection = await mysql.createConnection(conn.config.connection)
+  const { registro, nombres, apellidos, password, correo } = req.body;
 
-  bcrypt.hash(password, 10, async (err, hashedPassword) => {
-    if (err) {
-      console.error('Error: Error al hash de la contraseña:', err);
-      return res.status(200).json({ mensaje: '2' })
-    }
-
+  try {
+    const connection = await mysql.createConnection(conn.config.connection);
+    const hashedPassword = await bcrypt.hash(password, 5);
+    console.log(hashedPassword)
     const sql = 'INSERT INTO usuario (registro, nombres, apellidos, password, correo) VALUES (?, ?, ?, ?, ?)';
+    const [results] = await connection.execute(sql, [registro, nombres, apellidos, hashedPassword, correo]);
 
-    try {
-        await connection.query(sql, [registro, nombres, apellidos, hashedPassword, correo]);
-        console.log('Mensaje: Usuario creado exitosamente');
-        return res.status(200).json({ mensaje: '1' });
-      } catch (error) {
-        if (error instanceof mysql2.SqlError) {
-          console.error('Error: Error en la consulta SQL:', error.message);
-          return res.status(200).json({ mensaje: '0' });
-        } else {
-          console.error('Error: Error en Node.js:', error);
-          return res.status(200).json({ mensaje: '2' });
-        }
-      } finally {
-        connection.close();
-      }
-  })
-}
+    if (results.affectedRows === 1) {
+      //console.log('Usuario creado exitosamente');
+      return res.status(200).json({ mensaje: '1' });
+    } else {
+      //console.error('Error: No se insertó el usuario');
+      return res.status(200).json({ mensaje: '0' });
+    }
+  } catch (error) {
+    //console.error('Error en la consulta SQL:', error);
+    return res.status(200).json({ mensaje: '2' });
+  }
+};
 
-module.exports = {createUser}
+module.exports = { createUser };
+
 
