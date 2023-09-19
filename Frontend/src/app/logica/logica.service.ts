@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { API } from "../URL/URL";
 import { Observable } from "rxjs";
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -10,6 +11,7 @@ import { Observable } from "rxjs";
 export class LogicaService {
 
   private registro: string = "";
+  private post: number = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +26,11 @@ export class LogicaService {
 
   getUsername(): string {
     return this.registro;
+  }
+
+  //Publicaciones
+  guardarPost(id: number) {
+    this.post = id;
   }
 
   //Conexiones 
@@ -52,6 +59,42 @@ export class LogicaService {
       }),
     };
     return this.http.post<any>(API + 'recovery-password', entrada, httpOptions);
+  }
+
+  getCursos(): Observable<string[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.get<{ cursos: string[] }>(API + 'getCursos', httpOptions)
+      .pipe(
+        map((data: { cursos: string[] }) => data.cursos)
+      );
+  }
+  
+  getCatedraticos(): Observable<string[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.get<{ catedraticos: string[] }>(API + 'getCatedraticos', httpOptions)
+      .pipe(
+        map((data: { catedraticos: string[] }) => data.catedraticos)
+      );
+  }
+
+  getPublicaciones(): Observable<string[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.get<{ publicaciones: string[] }>(API + 'getPublicaciones', httpOptions)
+      .pipe(
+        map((data: { publicaciones: string[] }) => data.publicaciones)
+      );
   }
 
 }
