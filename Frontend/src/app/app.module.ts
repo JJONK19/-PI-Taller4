@@ -13,6 +13,12 @@ import { LoginComponent } from './login/login.component';
 import { RecoveryPasswordComponent } from './recovery-password/recovery-password.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { HomeComponent } from './home/home.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { SearchPostComponent } from './search-post/search-post.component';
+import { SearchUserComponent } from './search-user/search-user.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddCourseComponent } from './add-course/add-course.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RecoveryPasswordComponent,
     CreateUserComponent,
-    HomeComponent
+    HomeComponent,
+    CreatePostComponent,
+    SearchPostComponent,
+    SearchUserComponent,
+    ProfileComponent,
+    AddCourseComponent,
+    PostComponent
   ],
   imports: [
     ClarityModule,

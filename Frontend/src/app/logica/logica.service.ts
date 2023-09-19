@@ -9,21 +9,21 @@ import { Observable } from "rxjs";
 })
 export class LogicaService {
 
-  private username: string | null = null;
+  private registro: string = "";
 
   constructor(private http: HttpClient) { }
 
   //Usuario
-  login(username: string) {
-    this.username = username;
+  login(registro: string) {
+    this.registro = registro;
   }
 
   logout() {
-    this.username = null;
+    this.registro = "";
   }
 
-  getUsername(): string | null {
-    return this.username;
+  getUsername(): string {
+    return this.registro;
   }
 
   //Conexiones 

@@ -3,11 +3,11 @@ import { LogicaService } from 'src/app/logica/logica.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class HomeComponent {
+export class ProfileComponent {
 
   constructor(private router: Router, private analizarService: LogicaService) {}
 
@@ -19,5 +19,4 @@ export class HomeComponent {
     this.analizarService.logout()
     this.router.navigate(['/login'])
   }
-
 }
