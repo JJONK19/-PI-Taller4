@@ -18,7 +18,24 @@
             <a clrVerticalNavLink routerLink="/profile" routerLinkActive="active">Ver Perfil</a>
         </clr-vertical-nav>
         <div class="content-area">
-            <h1>Bienvenido</h1>
+            <h1>Create a Post</h1>
+            <form action="#" method="POST">
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="technology">Technology</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="travel">Travel</option>
+                    <option value="food">Food</option>
+                </select>
+    
+                <label for="postContent">Write your post:</label>
+                <textarea id="postContent" name="postContent" rows="5" placeholder="Type your post here..."></textarea>
+    
+                <label for="postDate">Date:</label>
+                <input type="date" id="postDate" name="postDate" required>
+    
+                <button type="submit">Post</button>
+            </form>
         </div>
     </div>
 </div>
