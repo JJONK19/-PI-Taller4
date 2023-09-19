@@ -18,7 +18,57 @@
             <a clrVerticalNavLink routerLink="/profile" routerLinkActive="active">Ver Perfil</a>
         </clr-vertical-nav>
         <div class="content-area">
-            <h1>Bienvenido</h1>
+            <h1>Datos Personales</h1>
+            <table style="width: 100%;">
+                <tr>
+                    <th>Datos</th>
+                    <th>Información</th>
+                    <th>carnet</th>
+                    <th>creditos</th>
+                    <th>Acciones</th>
+                </tr>
+                <tr>
+                    <td>natalia</td>
+                    <td>echeverria</td>
+                    <td>07</td>
+                    <td>07</td>
+                    <td><button class="edit-button">Editar</button></td>
+                </tr>
+            </table>
+            <h1>CURSOS APROBADOS</h1>
+            <table style="width: 100%;">
+                <tr>
+                    <th>Nombre del Curso</th>
+                    <th>Aprobado</th>
+                </tr>
+                <tr>
+                    <td>lenguajes</td>
+                    <td>
+                        <select class="toggle-dropdown" onchange="toggleYesNo(this)">
+                            <option value="Aprobado">Aprobado</option>
+                            <option value="No Aprobado">No Aprobado</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fisica 1</td>
+                    <td>
+                        <select class="toggle-dropdown" onchange="toggleYesNo(this)">
+                            <option value="Aprobado">Aprobado</option>
+                            <option value="No Aprobado">No Aprobado</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>IPC2</td>
+                    <td>
+                        <select class="toggle-dropdown" onchange="toggleYesNo(this)">
+                            <option value="Aprobado">Aprobado</option>
+                            <option value="No Aprobado">No Aprobado</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

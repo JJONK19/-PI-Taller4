@@ -70,4 +70,85 @@
     background-color: #fff;
     color: #2979b5;
   }
-  
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px; 
+}
+
+.user-detail {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px; 
+}
+
+.detail-label {
+    margin-right: 10px; 
+    font-weight: bold;
+    color: #2979b5; 
+}
+
+.detail-value {
+    color: #195180; 
+    font-size: 18px; 
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: center; 
+  padding: 8px; 
+}
+
+
+th {
+  background-color: #195180; 
+  color: white; 
+}
+
+
+.edit-button {
+  background-color: #FFA500;
+  color: white; 
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #FFD700; 
+}
+
+.edit-button {
+  background-color: #FFA500;
+  color: white; 
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.toggle-dropdown {
+  background-color: #3498db; 
+  color: white; 
+  padding: 5px; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer;
+}
+
+
+.toggle-dropdown option {
+  background-color: #1a3c53; 
+  color: white; 
+}
+
+
+.toggle-dropdown:hover {
+  background-color: #2980b9; 
+}

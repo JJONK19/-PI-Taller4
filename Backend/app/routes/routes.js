@@ -19,8 +19,8 @@ router.get('/crearmodelo', (req, res) => {
       })
     })
     .catch(error => {
-      res.status(500).json({
-          body: { message: 'Error: Model not created. ', error },
+      res.status(200).json({
+          body: { message: 'Error: Model not created. ', ID: "0"},
       })
     })
 })
