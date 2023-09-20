@@ -93,6 +93,7 @@ export class LogicaService {
     };
     return this.http.get<any[]>(API + 'getPublicaciones', httpOptions);
   }
+
   getUserData(entrada: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -100,5 +101,26 @@ export class LogicaService {
       }),
     };
     return this.http.post<any>(API + 'getUserData', entrada, httpOptions);
+  }
+
+  getCursosExistentes(): Observable<string[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.get<{ catedraticos: string[] }>(API + 'getCursosExistentes', httpOptions)
+      .pipe(
+        map((data: { catedraticos: string[] }) => data.catedraticos)
+      );
+  }
+
+  publicar(entrada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any>(API + 'publicar', entrada, httpOptions);
   }
 }

@@ -18,25 +18,19 @@
             <a clrVerticalNavLink routerLink="/profile" routerLinkActive="active">Ver Perfil</a>
         </clr-vertical-nav>
         <div class="content-area">
-            <h1>CREAR POST</h1>
-            <form action="#" method="POST">
-                <label for="categoria">categoria:</label>
-                <select id="categoria" name="categoria">
-                    <option value="Curso">Curso</option>
-                    <option value="Catedratico">Catedratico</option>
+            <h1>Crear Post</h1>
+            <form (submit)="publicar()" #postForm="ngForm"> 
+                <label for="nombre">Curso - Catedratico:</label>
+                <select [(ngModel)]="catedratico" name="catedratico">
+                  <option *ngFor="let option of catedraticos" [value]="option">{{ option }}</option>
                 </select>
-                <label for="nombre">Nombre:</label>
+            
+                <label for="postContent">Contenido:</label>
+                <textarea id="postContent" name="postContent" maxlength="150" rows="10" placeholder="Escribe tu publicacion..." [(ngModel)]="contenido" required></textarea>
+                <div class="character-count">Caracteres restantes: {{ 150 - contenido.length }}</div>
 
-                <input type="text" id="nombre" name="nombre" required>
-
-                <label for="postContent">Escribe tu publicacion:</label>
-                <textarea id="postContent" name="postContent" rows="5" placeholder="Escribe tu publicacion..."></textarea>
-    
-                <label for="fecha">fecha:</label>
-                <input type="date" id="postDate" name="postDate" required>
-    
-                <button type="submit">publicar</button>
-            </form>
+                <button type="submit">Publicar</button>
+              </form>
         </div>
     </div>
 </div>

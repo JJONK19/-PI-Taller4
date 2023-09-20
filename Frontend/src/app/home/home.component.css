@@ -123,3 +123,8 @@ clr-vertical-nav a:hover {
   cursor: pointer;
   font-size: 14px;
 }
+
+h1 {
+  text-align: center;
+  color: #333;
+}
