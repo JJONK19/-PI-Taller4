@@ -19,18 +19,34 @@
         </clr-vertical-nav>
         <div class="content-area">
             <h1>BUSCAR POST</h1>
-            <form action="#" method="POST">
+            <form (ngSubmit)="buscarPost()" #buscarPostForm="ngForm">
                 <label for="categoria">Categoría Del Post:</label>
-                <select id="categoria" name="categoria">
+                <select id="categoria" name="categoria" [(ngModel)]="selectedCategory" required>
                     <option value="Curso">Curso</option>
                     <option value="Catedratico">Catedratico</option>
                 </select>
                 <label for="nombre">Nombre Del Post:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                <div class="search-results" id="searchResults"></div>
-                <!-- Mueve el botón de "Buscar Post" al final del formulario -->
-                <button type="submit">Buscar Post</button>
+                <input type="text" id="nombre" name="nombre" [(ngModel)]="postName" required>
+                <button class="boton-especial" type="submit">Buscar Post</button>
             </form>
+
+            <div class="search-results">
+                <ng-container *ngIf="results.length > 0; else noResultsMessage">
+                    <div class="card" *ngFor="let result of results">
+                        <p>ID: {{ result.id }}</p>
+                        <p>Fecha: {{ result.fecha | date:'yyyy-MM-dd' }}</p>
+                        <p>Usuario: {{ result.usuario }}</p>
+                        <p>Curso: {{ result.curso }}</p>
+                        <p>Catedratico: {{ result.catedratico }}</p>
+                        <button (click)="verPost(result.id)">Ver Post</button>
+                    </div>
+                </ng-container>
+                <ng-template #noResultsMessage>
+                    <p>No se encontraron resultados.</p>
+                </ng-template>
+            </div>            
         </div>
     </div>
 </div>
+
+
