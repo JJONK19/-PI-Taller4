@@ -18,7 +18,37 @@
             <a clrVerticalNavLink routerLink="/profile" routerLinkActive="active">Ver Perfil</a>
         </clr-vertical-nav>
         <div class="content-area">
-            <h1>Bienvenido</h1>
+            <h1>Ver Post</h1>
+              <div class="post-details">
+                <div class="post-header">
+                  <p>No.Post: {{ post.id }}</p>
+                  <p>Publicacion: {{ post.fecha | date:'yyyy-MM-dd' }}</p>
+                  <p>Usuario: {{ post.usuario }}</p>
+                  <p>Curso: {{ post.curso }}</p>
+                  <p>Catedratico: {{ post.catedratico }}</p>
+                </div>
+                <div class="post-content">
+                  <p>{{ post.mensaje }}</p>
+                </div>
+              </div>
+              <div class="comments">
+                <h2>Comentarios</h2>
+                  <ng-container *ngIf="comments.length > 0; else noCommentsMessage">
+                    <div class="comment" *ngFor="let comment of comments">
+                      <p><strong>Usuario:</strong> {{ comment.usuario }} | <strong>Fecha:</strong> {{ comment.fecha | date:'yyyy-MM-dd' }}</p>
+                      <p>{{ comment.mensaje }}</p>
+                    </div>                    
+                  </ng-container>
+                  <ng-template #noCommentsMessage>
+                    <p>No hay comentarios disponibles.</p>
+                  </ng-template>
+                <div class="new-comment">
+                  <h3>Añadir Comentario</h3>
+                  <input type="text" [(ngModel)]="newComment" maxlength="150" placeholder="Escribe un comentario...">
+                  <div class="character-count">Caracteres restantes: {{ 150 - newComment.length }}</div>
+                  <button (click)="agregarComentario()">Agregar Comentario</button>
+                </div>
+              </div>
         </div>
     </div>
 </div>

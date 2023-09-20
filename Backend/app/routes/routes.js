@@ -10,6 +10,9 @@ const { getCursos } = require('../controllers/getCursos')
 const { getPublicaciones } = require('../controllers/getPublicaciones')
 const { getCursosExistentes } = require('../controllers/getCursosExistentes')
 const { publicar } = require('../controllers/publicar')
+const { getPublicacion } = require('../controllers/getPublicacion')
+const { getComentarios } = require('../controllers/getComentarios')
+const { addComentario } = require('../controllers/addComentario')
 
 // Main route
 router.get('/', (req, res) => {
@@ -56,5 +59,14 @@ router.get('/getCursosExistentes', getCursosExistentes)
 
 //Publicar
 router.post('/publicar', publicar)
+
+//Obtener Comentarios
+router.post('/getComentarios', getComentarios)
+
+//Obtener Post
+router.post('/getPublicacion', getPublicacion)
+
+//Obtener Post
+router.post('/addComentario', addComentario)
 
 module.exports = router

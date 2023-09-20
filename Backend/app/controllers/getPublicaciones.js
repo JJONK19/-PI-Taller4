@@ -15,7 +15,7 @@ async function getPublicaciones(req, res) {
       FROM publicacion AS p
       INNER JOIN curso AS c ON p.curso = c.id
       INNER JOIN catedratico AS ct ON p.catedratico = ct.id
-      ORDER BY p.fecha DESC
+      ORDER BY p.fecha, p.id DESC
     `); 
     connection.end();
     

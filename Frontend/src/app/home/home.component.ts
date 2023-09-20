@@ -3,7 +3,6 @@ import { LogicaService } from 'src/app/logica/logica.service';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

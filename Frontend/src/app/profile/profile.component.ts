@@ -17,9 +17,7 @@ export class ProfileComponent implements OnInit {
 
     } 
     this.analizarService.getUserData(data).subscribe((data: any) => {
-      this.userData = data;
-      
-      console.log(data)
+      this.userData = data[0];
     });
   }
   getUserName(): string {

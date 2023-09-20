@@ -33,6 +33,9 @@ export class LogicaService {
     this.post = id;
   }
 
+  getPost() {
+    return this.post;
+  }
   //Conexiones 
   crearUsuario(entrada: any): Observable<any> {
     const httpOptions = {
@@ -92,6 +95,33 @@ export class LogicaService {
       }),
     };
     return this.http.get<any[]>(API + 'getPublicaciones', httpOptions);
+  }
+  
+  getPublicacion(entrada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any>(API + 'getPublicacion', entrada, httpOptions);
+  }
+
+  getComentarios(entrada: any): Observable<any[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any[]>(API + 'getComentarios', entrada,  httpOptions);
+  } 
+
+  addComentario(entrada: any): Observable<any[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any[]>(API + 'addComentario', entrada,  httpOptions);
   }
 
   getUserData(entrada: any): Observable<any> {

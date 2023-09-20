@@ -36,7 +36,7 @@
                 <ng-container *ngIf="filteredCards.length > 0; else noCardsMessage">
                   <div class="card" *ngFor="let card of filteredCards">
                     <p>No.Post: {{ card.id }}</p>
-                     <p>Publicacion: {{ card.fecha | date:'yyyy-MM-dd' }}</p>
+                    <p>Publicacion: {{ card.fecha | date:'yyyy-MM-dd' }}</p>
                     <p>Usuario: {{ card.usuario }}</p>
                     <p>Curso: {{ card.curso }}</p>
                     <p>Catedratico: {{ card.catedratico }}</p>
