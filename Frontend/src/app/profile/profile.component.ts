@@ -7,11 +7,17 @@ import { Router } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponent implements OnInit {
   userData: any;
+  cursos: string[] = []
   constructor(private router: Router, private analizarService: LogicaService) {}
   ngOnInit() {
-    
+
+    this.analizarService.getCursos().subscribe(cursos => {
+      this.cursos = ['Ninguno', ...cursos];
+    })
+
     const data={
       registro: this.analizarService.getUsername()
 

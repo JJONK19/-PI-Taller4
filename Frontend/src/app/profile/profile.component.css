@@ -123,14 +123,6 @@ th {
   background-color: #FFD700; 
 }
 
-.edit-button {
-  background-color: #FFA500;
-  color: white; 
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
 
 .toggle-dropdown {
@@ -152,3 +144,30 @@ th {
 .toggle-dropdown:hover {
   background-color: #2980b9; 
 }
+
+.dropdown-container {
+  text-align: center;
+}
+
+.add-button-container {
+  align-items: center; 
+  background-color: #FFA500;
+  color: white;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 0; 
+  border: none; 
+  width: 525px; 
+  height: 40px;
+  margin: 0 auto; 
+  text-align: center;
+}
+
+.space-between {
+  margin-bottom: 30px; 
+}
+
+.dropdown-container select {
+  margin-top: 30px;
+}
+

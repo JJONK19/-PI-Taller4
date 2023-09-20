@@ -9,7 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent {
+  cursos: string[] = []
   constructor(private router: Router, private analizarService: LogicaService) {}
+  
+  ngOnInit() {
+
+    this.analizarService.getCursos().subscribe(cursos => {
+      this.cursos = ['Ninguno', ...cursos];
+    })
+  }
 
   getUserName(): string {
     return this.analizarService.getUsername()

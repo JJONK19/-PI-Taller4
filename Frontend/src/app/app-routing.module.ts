@@ -11,7 +11,6 @@ import { SearchUserComponent } from './search-user/search-user.component';
 import { PostComponent } from './post/post.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
