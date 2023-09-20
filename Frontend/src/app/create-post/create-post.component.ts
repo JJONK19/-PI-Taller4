@@ -42,7 +42,6 @@ export class CreatePostComponent implements OnInit {
       catedratico: partes[0]
     };
     
-    //Hacer la petición
     this.analizarService.publicar(data).subscribe((res:any)=>{
       this.router.navigate(['/home'])
     }, err=>{

@@ -71,7 +71,6 @@ clr-vertical-nav a:hover {
   color: #2979b5;
 }
 
-/*para editar buscar post*/
 .post-container {
   max-width: 600px;
   margin: 0 auto;
@@ -104,7 +103,8 @@ select, textarea, input[type="date"] {
   border-radius: 4px;
 }
 
-button {
+.boton-especial {
+  margin-top: 20px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -114,19 +114,23 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #0056b3;
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-
-
-.search-results {
-  margin-top: 20px;
+.card {
+  flex: 0 0 calc(33.33% - 20px);
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 200px;
-  background-color: #f7f7f7;
-  }
+  background-color: #fff; 
+  color: #2979b5; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 
 
   

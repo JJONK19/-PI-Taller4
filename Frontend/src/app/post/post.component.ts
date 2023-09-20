@@ -20,12 +20,10 @@ export class PostComponent implements OnInit{
       post: this.analizarService.getPost()
     }
 
-    //Obtener datos del post
     this.analizarService.getPublicacion(data).subscribe(data => {
       this.post = data;
     })
 
-    //Obtener Comentarios
     this.analizarService.getComentarios(data).subscribe(data => {
       this.comments = data;
     })
@@ -36,7 +34,6 @@ export class PostComponent implements OnInit{
       post: this.analizarService.getPost()
     }
 
-    //Obtener Comentarios
     this.analizarService.getComentarios(data).subscribe(data => {
       this.comments = data;
     })

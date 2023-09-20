@@ -13,6 +13,9 @@ const { publicar } = require('../controllers/publicar')
 const { getPublicacion } = require('../controllers/getPublicacion')
 const { getComentarios } = require('../controllers/getComentarios')
 const { addComentario } = require('../controllers/addComentario')
+const { searchPublicacionCurso } = require('../controllers/searchPublicacionCurso')
+const { searchPublicacionCatedratico } = require('../controllers/searchPublicacionCatedratico')
+const { searchUser } = require('../controllers/searchUser')
 
 // Main route
 router.get('/', (req, res) => {
@@ -69,4 +72,14 @@ router.post('/getPublicacion', getPublicacion)
 //Obtener Post
 router.post('/addComentario', addComentario)
 
+//Buscar publicacion por curso
+router.post('/searchPublicacionCurso', searchPublicacionCurso)
+
+//Buscar publicacion por curso
+router.post('/searchPublicacionCatedratico', searchPublicacionCatedratico)
+
+//Buscar usaurio
+router.post('/searchUser', searchUser)
+
 module.exports = router
+

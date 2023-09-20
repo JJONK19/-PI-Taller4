@@ -15,7 +15,7 @@ async function getComentarios(req, res) {
         FROM comentario AS c
         WHERE c.publicacion = ? 
         ORDER BY c.fecha, c.id DESC
-      `, [postId]); // Usa un parámetro para el ID de la publicación
+      `, [postId]);
       connection.end();
       
       if (!rows || rows.length === 0) {

@@ -23,7 +23,6 @@ export class CreateUserComponent {
   constructor(private analizarService: LogicaService, private formBuilder: FormBuilder) {}
 
   onSubmit() {
-    //Crear la data 
     const data = {
       registro: this.formData.username,
       nombres: this.formData.nombres,
@@ -32,7 +31,6 @@ export class CreateUserComponent {
       correo: this.formData.correo
     } 
     
-    //Hacer la petición
     this.analizarService.crearUsuario(data).subscribe((res:any)=>{
       this.response = res;
       if (res.mensaje === '1') {

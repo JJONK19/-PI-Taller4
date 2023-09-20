@@ -21,13 +21,11 @@ export class LoginComponent {
   constructor(private router: Router, private analizarService: LogicaService, private formBuilder: FormBuilder) {}
 
   onSubmit() {
-    //Crear la data 
     const data = {
       registro: this.formData.username,
       password: this.formData.password
     }
     
-    //Hacer la petición
     this.analizarService.loginUsuario(data).subscribe((res:any)=>{
       this.response = res;
       if (res.mensaje === '1') {
