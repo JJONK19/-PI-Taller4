@@ -76,7 +76,6 @@
     color: #333;
   }
   
-/* Estilos para la página Ver Post */
 .page-title {
   text-align: center;
   font-size: 28px;
@@ -85,7 +84,7 @@
 }
 
 .post-details {
-  background-color: #f5f5f5; /* Color de fondo del encabezado */
+  background-color: #2979b5;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
@@ -94,12 +93,12 @@
 }
 
 .post-content {
-  background-color: #fff; /* Color de fondo del contenido */
+  background-color: #fff; 
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  color: #333; /* Color del texto del mensaje del post */
+  color: #333; 
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -112,10 +111,11 @@
   font-weight: bold;
   margin: 0;
   color: #333;
+  background-color: #2979b5;
 }
 
 .comments {
-  background-color: #f5f5f5; /* Color de fondo de los comentarios */
+  background-color: #f5f5f5; 
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
@@ -160,7 +160,7 @@
 
 .character-count {
   font-size: 12px;
-  color: #666; /* Color del texto del contador de caracteres */
+  color: #666; 
   margin-bottom: 10px;
 }
 
