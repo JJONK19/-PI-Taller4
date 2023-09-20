@@ -1,5 +1,5 @@
 const conn = require('../config/connection');
-const mysql = require('mysql2/promise'); // Importa la versión de promesas de mysql2
+const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
 
 const createUser = async (req, res) => {

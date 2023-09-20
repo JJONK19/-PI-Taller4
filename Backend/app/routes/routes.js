@@ -5,6 +5,9 @@ const { createUser } = require('../controllers/createUser')
 const { loginUser } = require('../controllers/loginUser')
 const { recoverUser } = require('../controllers/recoverUser')
 const { getUser } = require('../controllers/getUser')
+const { getCatedraticos } = require('../controllers/getCatedraticos')
+const { getCursos } = require('../controllers/getCursos')
+const { getPublicaciones } = require('../controllers/getPublicaciones')
 
 // Main route
 router.get('/', (req, res) => {
@@ -36,5 +39,14 @@ router.post('/login', loginUser)
 router.post('/recovery-password', recoverUser)
 
 router.post('/getUserData', getUser)
+
+//Obtener Cursos
+router.get('/getCursos', getCursos)
+
+//Obtener Catedraticos
+router.get('/getCatedraticos', getCatedraticos)
+
+//Obtener Publicaciones
+router.get('/getPublicaciones', getPublicaciones)
 
 module.exports = router

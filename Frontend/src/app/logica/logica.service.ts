@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class LogicaService {
 
-  private registro: string = "";
+  private registro: string = ""; 
   private post: number = 0;
 
   constructor(private http: HttpClient) { }
@@ -85,16 +85,13 @@ export class LogicaService {
       );
   }
 
-  getPublicaciones(): Observable<string[]> {
+  getPublicaciones(): Observable<any[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
     };
-    return this.http.get<{ publicaciones: string[] }>(API + 'getPublicaciones', httpOptions)
-      .pipe(
-        map((data: { publicaciones: string[] }) => data.publicaciones)
-      );
+    return this.http.get<any[]>(API + 'getPublicaciones', httpOptions);
   }
   getUserData(entrada: any): Observable<any> {
     const httpOptions = {
