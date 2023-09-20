@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LogicaService } from 'src/app/logica/logica.service';
 import { Router } from '@angular/router';
 
@@ -7,10 +7,21 @@ import { Router } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
-
+export class ProfileComponent implements OnInit {
+  userData: any;
   constructor(private router: Router, private analizarService: LogicaService) {}
+  ngOnInit() {
+    
+    const data={
+      registro: this.analizarService.getUsername()
 
+    } 
+    this.analizarService.getUserData(data).subscribe((data: any) => {
+      this.userData = data;
+      
+      console.log(data)
+    });
+  }
   getUserName(): string {
     return this.analizarService.getUsername()
   }

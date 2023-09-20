@@ -96,5 +96,12 @@ export class LogicaService {
         map((data: { publicaciones: string[] }) => data.publicaciones)
       );
   }
-
+  getUserData(entrada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any>(API + 'getUserData', entrada, httpOptions);
+  }
 }
