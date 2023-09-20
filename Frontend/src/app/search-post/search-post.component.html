@@ -18,8 +18,19 @@
             <a clrVerticalNavLink routerLink="/profile" routerLinkActive="active">Ver Perfil</a>
         </clr-vertical-nav>
         <div class="content-area">
-            <h1>Bienvenido</h1>
+            <h1>BUSCAR POST</h1>
+            <form action="#" method="POST">
+                <label for="categoria">Categoría Del Post:</label>
+                <select id="categoria" name="categoria">
+                    <option value="Curso">Curso</option>
+                    <option value="Catedratico">Catedratico</option>
+                </select>
+                <label for="nombre">Nombre Del Post:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <div class="search-results" id="searchResults"></div>
+                <!-- Mueve el botón de "Buscar Post" al final del formulario -->
+                <button type="submit">Buscar Post</button>
+            </form>
         </div>
     </div>
 </div>
-
