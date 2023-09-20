@@ -19,6 +19,8 @@ import { SearchUserComponent } from './search-user/search-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { PostComponent } from './post/post.component';
+import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { PostComponent } from './post/post.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

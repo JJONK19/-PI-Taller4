@@ -22,7 +22,7 @@
             <form (submit)="publicar()" #postForm="ngForm"> 
                 <label for="nombre">Curso - Catedratico:</label>
                 <select [(ngModel)]="catedratico" name="catedratico">
-                  <option *ngFor="let option of catedraticos" [value]="option">{{ option }}</option>
+                  <option *ngFor="let option of cursos" [value]="option">{{ option }}</option>
                 </select>
             
                 <label for="postContent">Contenido:</label>

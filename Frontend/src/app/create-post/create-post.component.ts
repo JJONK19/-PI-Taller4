@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
 export class CreatePostComponent implements OnInit {
   catedratico: string = '';
   contenido: string = '';
-  catedraticos: string[] = []; 
+  cursos: string[] = []; 
 
   constructor(private router: Router, private analizarService: LogicaService) {}
 
   ngOnInit(): void {
     this.analizarService.getCursosExistentes().subscribe(cursos => {
-      this.catedraticos = cursos;
+      this.cursos = cursos;
     })
   }
 
@@ -31,14 +31,17 @@ export class CreatePostComponent implements OnInit {
 
   publicar() {
     const partes = this.catedratico.split(" - ")
+    const now = new Date();
+    const formattedDate = now.toISOString().slice(0, 19).replace("T", " "); 
+
     const data = {
-      fecha: new Date(),
+      fecha: formattedDate,
       mensaje: this.contenido,
       usuario: this.analizarService.getUsername(),
-      curso: partes[0], 
-      catedratico: partes[1]
-    }
-
+      curso: partes[1],
+      catedratico: partes[0]
+    };
+    
     //Hacer la petición
     this.analizarService.publicar(data).subscribe((res:any)=>{
       this.router.navigate(['/home'])

@@ -109,9 +109,9 @@ export class LogicaService {
         'Content-Type': 'application/json'
       }),
     };
-    return this.http.get<{ catedraticos: string[] }>(API + 'getCursosExistentes', httpOptions)
+    return this.http.get<{ cursos: string[] }>(API + 'getCursosExistentes', httpOptions)
       .pipe(
-        map((data: { catedraticos: string[] }) => data.catedraticos)
+        map((data: { cursos: string[] }) => data.cursos)
       );
   }
 

@@ -75,26 +75,19 @@ clr-vertical-nav a:hover {
 
 .filters {
   display: flex;
-  align-items: center;
+  align-items: center; 
   margin-bottom: 20px;
+  justify-content: space-between; 
 }
 
-.filter-select {
-  margin-right: 10px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 16px;
-}
-
+.filter-select,
 .filter-button {
-  padding: 8px 16px;
-  background-color: #007bff; 
-  color: #fff; 
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 16px;
+  flex: 1; 
+  margin-right: 10px;
+}
+
+.filter-button:last-child {
+  margin-right: 0;
 }
 
 .card-list {

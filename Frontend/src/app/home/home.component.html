@@ -21,9 +21,11 @@
         <div class="content-area">
             <h1>Inicio</h1>
             <div class="filters">
+                <label for="catedratico">Catedráticos</label>
                 <select [(ngModel)]="catedratico">
                     <option *ngFor="let option of catedraticos" [value]="option">{{ option }}</option>
                 </select>
+                <label for="curso">Cursos</label>
                 <select [(ngModel)]="curso">
                     <option *ngFor="let option of cursos" [value]="option">{{ option }}</option>
                 </select>
@@ -32,19 +34,21 @@
             
             <div class="card-list">
                 <ng-container *ngIf="filteredCards.length > 0; else noCardsMessage">
-                    <div class="card" *ngFor="let card of filteredCards">
-                        <p>No.Post: {{ card.id }}</p>
-                        <p>Publicacion: {{ card.fecha }}</p>
-                        <p>Usuario: {{ card.registro }}</p>
-                        <p>Curso: {{ card.curso }}</p>
-                        <p>Catedratico: {{ card.catedratico }}</p>
-                        <button (click)="verPost(card.id)">Ver Post</button>
-                    </div>
+                  <div class="card" *ngFor="let card of filteredCards">
+                    <p>No.Post: {{ card.id }}</p>
+                     <p>Publicacion: {{ card.fecha | date:'yyyy-MM-dd' }}</p>
+                    <p>Usuario: {{ card.usuario }}</p>
+                    <p>Curso: {{ card.curso }}</p>
+                    <p>Catedratico: {{ card.catedratico }}</p>
+                    <button (click)="verPost(card.id)">Ver Post</button>
+                  </div>
                 </ng-container>
                 <ng-template #noCardsMessage>
-                    <p>Aún no hay publicaciones añadidas.</p>
+                  <p>Aún no hay publicaciones añadidas.</p>
                 </ng-template>
               </div>
+              
+              
         </div>
     </div>
 </div>

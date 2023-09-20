@@ -8,6 +8,8 @@ const { getUser } = require('../controllers/getUser')
 const { getCatedraticos } = require('../controllers/getCatedraticos')
 const { getCursos } = require('../controllers/getCursos')
 const { getPublicaciones } = require('../controllers/getPublicaciones')
+const { getCursosExistentes } = require('../controllers/getCursosExistentes')
+const { publicar } = require('../controllers/publicar')
 
 // Main route
 router.get('/', (req, res) => {
@@ -48,5 +50,11 @@ router.get('/getCatedraticos', getCatedraticos)
 
 //Obtener Publicaciones
 router.get('/getPublicaciones', getPublicaciones)
+
+//Obtener Cursos
+router.get('/getCursosExistentes', getCursosExistentes)
+
+//Publicar
+router.post('/publicar', publicar)
 
 module.exports = router
