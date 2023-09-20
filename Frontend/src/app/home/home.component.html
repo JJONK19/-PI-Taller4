@@ -19,42 +19,34 @@
         </clr-vertical-nav>
 
         <div class="content-area">
-            <h1>Inicio</h1>
+            <h1>INICIO</h1>
             <div class="filters">
                 <label for="catedratico">Catedráticos</label>
-                <select [(ngModel)]="catedratico">
+                <select [(ngModel)]="catedratico" class="toggle-dropdown">
                     <option *ngFor="let option of catedraticos" [value]="option">{{ option }}</option>
                 </select>
                 <label for="curso">Cursos</label>
-                <select [(ngModel)]="curso">
+                <select [(ngModel)]="curso" class="toggle-dropdown">
                     <option *ngFor="let option of cursos" [value]="option">{{ option }}</option>
                 </select>
-                <button (click)="filtrar()">Filtrar</button>
+                <button (click)="filtrar()" class="edit-button">Filtrar</button>
             </div>
-            
+
             <div class="card-list">
                 <ng-container *ngIf="filteredCards.length > 0; else noCardsMessage">
-                  <div class="card" *ngFor="let card of filteredCards">
-                    <p>No.Post: {{ card.id }}</p>
-                    <p>Publicacion: {{ card.fecha | date:'yyyy-MM-dd' }}</p>
-                    <p>Usuario: {{ card.usuario }}</p>
-                    <p>Curso: {{ card.curso }}</p>
-                    <p>Catedratico: {{ card.catedratico }}</p>
-                    <button (click)="verPost(card.id)">Ver Post</button>
-                  </div>
+                    <div class="card" *ngFor="let card of filteredCards">
+                        <p>No.Post: {{ card.id }}</p>
+                        <p>Publicacion: {{ card.fecha | date:'yyyy-MM-dd' }}</p>
+                        <p>Usuario: {{ card.usuario }}</p>
+                        <p>Curso: {{ card.curso }}</p>
+                        <p>Catedratico: {{ card.catedratico }}</p>
+                        <button (click)="verPost(card.id)">Ver Post</button>
+                    </div>
                 </ng-container>
                 <ng-template #noCardsMessage>
-                  <p>Aún no hay publicaciones añadidas.</p>
+                    <p>Aún no hay publicaciones añadidas.</p>
                 </ng-template>
-              </div>
-              
-              
+            </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-  
