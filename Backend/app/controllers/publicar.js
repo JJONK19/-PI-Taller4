@@ -19,7 +19,6 @@ const publicar = async (req, res) => {
     }
     const catedraticoId = catedraticoResult[0].id;
 
-    // Insertar la publicación con los IDs de curso y catedrático obtenidos
     const sql = 'INSERT INTO publicacion (fecha, mensaje, usuario, curso, catedratico) VALUES (?, ?, ?, ?, ?)';
     const [results] = await connection.execute(sql, [fecha, mensaje, usuario, cursoId, catedraticoId]);
 

@@ -12,6 +12,7 @@ export class LogicaService {
 
   private registro: string = ""; 
   private post: number = 0;
+  private perfil: string = "";
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +26,14 @@ export class LogicaService {
   }
 
   getUsername(): string {
+    return this.registro;
+  }
+
+  setPerfil(registro: string) {
+    this.registro = registro;
+  }
+
+  getPerfil(): string {
     return this.registro;
   }
 
@@ -106,6 +115,24 @@ export class LogicaService {
     return this.http.post<any>(API + 'getPublicacion', entrada, httpOptions);
   }
 
+  searchPublicacionCurso(entrada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any>(API + 'searchPublicacionCurso', entrada, httpOptions);
+  }
+
+  searchPublicacionCatedratico(entrada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any>(API + 'searchPublicacionCatedratico', entrada, httpOptions);
+  }
+
   getComentarios(entrada: any): Observable<any[]> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -131,6 +158,15 @@ export class LogicaService {
       }),
     };
     return this.http.post<any>(API + 'getUserData', entrada, httpOptions);
+  }
+
+  searchUser(entrada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any>(API + 'searchUser', entrada, httpOptions);
   }
 
   getCursosExistentes(): Observable<string[]> {
