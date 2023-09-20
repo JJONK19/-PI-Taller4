@@ -1,4 +1,3 @@
-
 <div class="main-container">
     <div class="header">
         <div class="user-info">
@@ -20,13 +19,25 @@
         </clr-vertical-nav>
         <div class="content-area">
             <h1>BUSCAR USUARIO</h1>
-            <div class="search-box">
-                <input type="text" placeholder="Registro academico a buscar...">
-                <button onclick="buscar()">Buscar Usuario</button>
-                <div class="search-results" id="searchResults">
+            <form (ngSubmit)="buscarUsuario()" #userForm="ngForm">
+                <label for="nombre">Registro Académico:</label>
+                <input type="text" id="nombre" name="nombre" required [(ngModel)]="registro">
+                <button (click)="buscarUsuario()" class="boton-especial" type="submit">Buscar Usuario</button>
+            </form>
+
+            <div class="search-results">
+                <ng-container *ngIf="results.length > 0; else noResultsMessage">
+                    <div class="card" *ngFor="let result of results">
+                        <p>Registro: {{ result.registro }}</p>
+                        <p>Nombre: {{ result.nombre }}</p>
+                        <button (click)="verUsuario(result.registro)">Ver Usuario</button>
+                    </div>
+                </ng-container>
+                <ng-template #noResultsMessage>
+                    <p>No se encontraron resultados.</p>
+                </ng-template>
             </div>
         </div>
     </div>
 </div>
-
 
