@@ -4,6 +4,7 @@ const createModel = require('../controllers/create')
 const { createUser } = require('../controllers/createUser')
 const { loginUser } = require('../controllers/loginUser')
 const { recoverUser } = require('../controllers/recoverUser')
+const { getUser } = require('../controllers/getUser')
 
 // Main route
 router.get('/', (req, res) => {
@@ -33,5 +34,7 @@ router.post('/login', loginUser)
 
 //Cambiar contraseña
 router.post('/recovery-password', recoverUser)
+
+router.post('/getUserData', getUser)
 
 module.exports = router
