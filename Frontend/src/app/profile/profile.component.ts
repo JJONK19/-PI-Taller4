@@ -10,22 +10,32 @@ import { Router } from '@angular/router';
 
 export class ProfileComponent implements OnInit {
   userData: any;
-  cursos: string[] = []
-  constructor(private router: Router, private analizarService: LogicaService) {}
-  ngOnInit() {
+  cursos: string[] = [];
 
-    this.analizarService.getCursos().subscribe(cursos => {
-      this.cursos = ['Ninguno', ...cursos];
+  constructor(private router: Router, private analizarService: LogicaService) {}
+
+  ngOnInit() {
+    let data;
+    //Crear la data
+    if(this.analizarService.getPerfil() === ""){
+      data = {
+        registro: this.analizarService.getUsername()
+      }
+    }else{
+      data = {
+        registro: this.analizarService.getPerfil()
+      }
+    }
+
+    this.analizarService.getCursoAprobado(data).subscribe(data => {
+      this.cursos = data;
     })
 
-    const data={
-      registro: this.analizarService.getUsername()
-
-    } 
     this.analizarService.getUserData(data).subscribe((data: any) => {
       this.userData = data[0];
     });
   }
+
   getUserName(): string {
     return this.analizarService.getUsername()
   }
@@ -33,5 +43,9 @@ export class ProfileComponent implements OnInit {
   logout(): void {
     this.analizarService.logout()
     this.router.navigate(['/login'])
+  }
+
+  mostrarBoton(): boolean {
+    return this.analizarService.getPerfil().trim() === ''; 
   }
 }

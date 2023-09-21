@@ -21,19 +21,18 @@
             <h1>Agregar cursos aprobados</h1>
             <table style="width: 100%;">
                 <tr>
-                    <th>Nombre del Curso</th>
+                    <th>Cursos Pendientes</th>
                 </tr>
             </table>
             <div class="dropdown-container">
-                <label for="curso" style="margin-right: 22px;">Cursos del Usuario</label>
-                <select [(ngModel)]="cursos" class="toggle-dropdown" style="margin-top: 75px;">
+                <select [(ngModel)]="curso" class="toggle-dropdown" style="margin-top: 20px;">
                     <option *ngFor="let option of cursos" [value]="option">{{ option }}</option>
                 </select>
             </div>
             <div class="add-button-container" style="margin-top: 20px;"> 
-                <button class="edit-button">Agregar</button>
+                <button (click)="anadir()" class="edit-button">Agregar</button>
             </div>
         </div>
-    </div>
+    </div> 
 </div>
 

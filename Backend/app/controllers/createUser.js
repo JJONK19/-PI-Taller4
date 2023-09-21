@@ -8,7 +8,6 @@ const createUser = async (req, res) => {
   try {
     const connection = await mysql.createConnection(conn.config.connection);
     const hashedPassword = await bcrypt.hash(password, 5);
-    console.log(hashedPassword)
     const sql = 'INSERT INTO usuario (registro, nombres, apellidos, password, correo) VALUES (?, ?, ?, ?, ?)';
     const [results] = await connection.execute(sql, [registro, nombres, apellidos, hashedPassword, correo]);
 

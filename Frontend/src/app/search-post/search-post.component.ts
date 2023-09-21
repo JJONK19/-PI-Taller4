@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LogicaService } from 'src/app/logica/logica.service';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -8,13 +8,17 @@ import { DatePipe } from '@angular/common';
   templateUrl: './search-post.component.html',
   styleUrls: ['./search-post.component.css']
 })
-export class SearchPostComponent {
+export class SearchPostComponent implements OnInit{
   selectedCategory: string = 'Curso';
   postName: string = '';
   results: any[] = []; 
 
   constructor(private router: Router, private analizarService: LogicaService, private datePipe: DatePipe) {}
-
+  
+  ngOnInit() {
+    this.analizarService.setPerfil("")
+  }
+  
   buscarPost() {
     const data = {
       nombre: this.postName

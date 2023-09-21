@@ -10,12 +10,18 @@ import { Router } from '@angular/router';
 })
 export class AddCourseComponent {
   cursos: string[] = []
+  curso: string = ""
   constructor(private router: Router, private analizarService: LogicaService) {}
   
   ngOnInit() {
+    this.analizarService.setPerfil("")
+    
+    const data = {
+      registro: this.analizarService.getUsername()
+    }
 
-    this.analizarService.getCursos().subscribe(cursos => {
-      this.cursos = ['Ninguno', ...cursos];
+    this.analizarService.getCursosPendientes(data).subscribe(cursos => {
+      this.cursos = cursos
     })
   }
 
@@ -27,4 +33,26 @@ export class AddCourseComponent {
     this.analizarService.logout()
     this.router.navigate(['/login'])
   }
-}
+
+  actualizarCursos(): void {
+    const data = {
+      registro: this.analizarService.getUsername()
+    }
+
+    this.analizarService.getCursosPendientes(data).subscribe(cursos => {
+      this.cursos = cursos
+    })
+  }
+
+  anadir(): void{
+    const data = {
+      curso: this.curso,
+      registro: this.analizarService.getUsername()
+    }
+
+    this.analizarService.addCursoAprobado(data).subscribe(cursos => {
+      this.actualizarCursos()
+    })
+  }
+
+} 

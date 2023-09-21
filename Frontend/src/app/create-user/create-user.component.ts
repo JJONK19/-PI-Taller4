@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { LogicaService } from 'src/app/logica/logica.service';
 
@@ -7,7 +7,7 @@ import { LogicaService } from 'src/app/logica/logica.service';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
-export class CreateUserComponent {
+export class CreateUserComponent implements OnInit {
   formData = {
     username: '',
     nombres: '',
@@ -21,6 +21,10 @@ export class CreateUserComponent {
   response = { mensaje: '-1' }
 
   constructor(private analizarService: LogicaService, private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.analizarService.setPerfil("")
+  }
 
   onSubmit() {
     const data = {

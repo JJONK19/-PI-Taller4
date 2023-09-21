@@ -7,11 +7,15 @@ import { Router } from '@angular/router';
   templateUrl: './search-user.component.html',
   styleUrls: ['./search-user.component.css']
 })
-export class SearchUserComponent {
+export class SearchUserComponent implements OnInit {
   registro: string = '';
   results: any[] = [];
 
   constructor(private router: Router, private analizarService: LogicaService) {}
+
+  ngOnInit() {
+    this.analizarService.setPerfil("")
+  }
 
   getUserName(): string {
     return this.analizarService.getUsername()

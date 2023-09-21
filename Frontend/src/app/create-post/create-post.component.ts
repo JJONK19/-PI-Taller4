@@ -15,6 +15,8 @@ export class CreatePostComponent implements OnInit {
   constructor(private router: Router, private analizarService: LogicaService) {}
 
   ngOnInit(): void {
+    this.analizarService.setPerfil("")
+    
     this.analizarService.getCursosExistentes().subscribe(cursos => {
       this.cursos = cursos;
     })

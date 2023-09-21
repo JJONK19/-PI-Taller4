@@ -16,6 +16,9 @@ const { addComentario } = require('../controllers/addComentario')
 const { searchPublicacionCurso } = require('../controllers/searchPublicacionCurso')
 const { searchPublicacionCatedratico } = require('../controllers/searchPublicacionCatedratico')
 const { searchUser } = require('../controllers/searchUser')
+const { getCursosAprobados } = require('../controllers/getCursosAprobados')
+const { getCursosPendientes } = require('../controllers/getCursosPendientes')
+const { addCursoAprobado } = require('../controllers/addCursoAprobado')
 
 // Main route
 router.get('/', (req, res) => {
@@ -80,6 +83,15 @@ router.post('/searchPublicacionCatedratico', searchPublicacionCatedratico)
 
 //Buscar usaurio
 router.post('/searchUser', searchUser)
+
+//Get Cursos Aprobados
+router.post('/getCursosAprobados', getCursosAprobados)
+
+//Get Cursos Pendientes
+router.post('/getCursosPendientes', getCursosPendientes)
+
+//Add Curso Aprobado
+router.post('/addCursoAprobado', addCursoAprobado)
 
 module.exports = router
 

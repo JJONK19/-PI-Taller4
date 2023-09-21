@@ -16,6 +16,8 @@ export class PostComponent implements OnInit{
   constructor(private router: Router, private analizarService: LogicaService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
+    this.analizarService.setPerfil("")
+    
     let data = {
       post: this.analizarService.getPost()
     }
@@ -53,7 +55,6 @@ export class PostComponent implements OnInit{
       usuario: this.analizarService.getUsername(), 
       post: this.analizarService.getPost()
     };
-    console.log(data)
 
     this.analizarService.addComentario(data).subscribe(data => {
       this.newComment = '';

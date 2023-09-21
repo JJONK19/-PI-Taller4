@@ -32,13 +32,16 @@
                     <td>{{ userData.apellidos }}</td>
                     <td>{{ userData.registro }}</td>
                     <td>{{ userData.creditos }}</td>
-                    <td><button class="edit-button" clrVerticalNavLink routerLink="/add-course" routerLinkActive="active">Añadir cursos</button></td>
+                    <td><button class="edit-button" clrVerticalNavLink routerLink="/add-course" routerLinkActive="active" *ngIf="mostrarBoton()">Añadir cursos</button></td>
                 </tr>
             </table>
             <h1>Cursos aprobados</h1>
             <table style="width: 100%;">
                 <tr>
                     <th>Nombre del Curso</th>
+                </tr>
+                <tr *ngFor="let curso of cursos">
+                    <td>{{ curso }}</td>
                 </tr>
             </table>
         </div>

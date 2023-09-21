@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit{
   constructor(private router: Router, private analizarService: LogicaService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
+    
+    this.analizarService.setPerfil("")
+    
     this.analizarService.getCursos().subscribe(cursos => {
       this.cursos = ['Ninguno', ...cursos];
     })

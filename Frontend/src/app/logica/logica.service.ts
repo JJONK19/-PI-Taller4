@@ -30,11 +30,11 @@ export class LogicaService {
   }
 
   setPerfil(registro: string) {
-    this.registro = registro;
+    this.perfil = registro;
   }
 
   getPerfil(): string {
-    return this.registro;
+    return this.perfil;
   }
 
   //Publicaciones
@@ -188,5 +188,38 @@ export class LogicaService {
       }),
     };
     return this.http.post<any>(API + 'publicar', entrada, httpOptions);
+  }
+
+  addCursoAprobado(entrada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any>(API + 'addCursoAprobado', entrada, httpOptions);
+  }
+
+  getCursoAprobado(entrada: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<any>(API + 'getCursosAprobados', entrada, httpOptions)
+    .pipe(
+      map((data: { cursos: string[] }) => data.cursos)
+    );
+  }
+
+  getCursosPendientes(entrada: any): Observable<string[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+    return this.http.post<{ cursos: string[] }>(API + 'getCursosPendientes', entrada, httpOptions)
+      .pipe(
+        map((data: { cursos: string[] }) => data.cursos)
+      );
   }
 }
